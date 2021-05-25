@@ -1,26 +1,8 @@
 import "./App.css";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
 import storage from "local-storage-fallback";
 import { useState } from "react";
-
-const initialTheme = {
-  mode: "light",
-  darkModeColor: "black",
-  lightModeColor: "rgb(254, 249, 231)",
-};
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${(props) =>
-      props.theme.mode == "dark"
-        ? props.theme.darkModeColor
-        : props.theme.lightModeColor};
-    color:${(props) =>
-      props.theme.mode == "dark"
-        ? props.theme.lightModeColor
-        : props.theme.darkModeColor};
-  }
-`;
+import { GlobalStyle, initialTheme } from "./theme";
+import { ThemeProvider } from "styled-components";
 
 function App() {
   const getInitialTheme = () => {
