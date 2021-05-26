@@ -3,6 +3,7 @@ import storage from "local-storage-fallback";
 import { useState } from "react";
 import { GlobalStyle, initialTheme } from "./theme";
 import { ThemeProvider } from "styled-components";
+import Header from "./Header/Header";
 
 function App() {
   const getInitialTheme = () => {
@@ -25,7 +26,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <div className="App">
-        <h1 onClick={() => setAppTheme()}>Bust a gash</h1>
+        <button onClick={() => setAppTheme()}>
+          Switch to {theme.mode == "dark" ? "light" : "dark"} mode
+        </button>
+        <Header></Header>
       </div>
     </ThemeProvider>
   );
