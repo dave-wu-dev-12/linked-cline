@@ -1,0 +1,21 @@
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0.25em;
+  opacity: 0.6;
+  cursor: pointer;
+  width: 45px;
+}
+
+.iconContainer:hover {
+  opacity: 1;
+}
+
+.iconContainer .iconImg {
+  font-size: 1.25em;
+}
+
+.iconContainer p {
+  font-size: 0.5em;
+}

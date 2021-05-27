@@ -6,6 +6,7 @@ import WorkIcon from "@material-ui/icons/Work";
 import MessageIcon from "@material-ui/icons/Message";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import SearchIcon from "@material-ui/icons/Search";
+import HeaderIcons from "./HeaderIcons/HeaderIcons";
 
 function Header() {
   return (
@@ -18,16 +19,19 @@ function Header() {
             alt="logo"
           />
           <div className="searchBarContainer">
-            <SearchIcon></SearchIcon>
+            <SearchIcon className="searchImg"></SearchIcon>
             <input type="text" />
           </div>
         </div>
         <div className="rightHeaderContainer">
-          <HomeIcon></HomeIcon>
-          <PeopleAltIcon></PeopleAltIcon>
-          <WorkIcon></WorkIcon>
-          <MessageIcon></MessageIcon>
-          <NotificationsIcon></NotificationsIcon>
+          <HeaderIcons Icon={HomeIcon} label={"Home"}></HeaderIcons>
+          <HeaderIcons Icon={PeopleAltIcon} label={"Network"}></HeaderIcons>
+          <HeaderIcons Icon={WorkIcon} label={"Jobs"}></HeaderIcons>
+          <HeaderIcons Icon={MessageIcon} label={"Messaging"}></HeaderIcons>
+          <HeaderIcons
+            Icon={NotificationsIcon}
+            label={"Notifications"}
+          ></HeaderIcons>
         </div>
       </div>
     </div>
