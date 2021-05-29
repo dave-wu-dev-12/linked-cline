@@ -5,8 +5,10 @@ const initialTheme = {
   mode: "light",
   darkModeColor: "black",
   lightModeColor: "rgb(254, 249, 231) !important",
+  headerLightModeColor: "white",
+  headerDarkModeColor: "black",
   borderDarkMode: "1px solid rgb(254, 249, 231)",
-  borderLightMode: "1px solid black",
+  borderLightMode: "1px solid lightgray",
   inputDarkMode: "lightgray",
   inputLightMode: "aliceblue",
 };
@@ -21,13 +23,17 @@ const GlobalStyle = createGlobalStyle`
         props.theme.mode == "dark"
           ? props.theme.lightModeColor
           : props.theme.darkModeColor};
-        transition:  all ease-in .75s;
     }
     .headerContainer {
       border-bottom: ${(props) =>
         props.theme.mode == "dark"
           ? props.theme.borderDarkMode
           : props.theme.borderLightMode};
+       background-color:  ${(props) =>
+         props.theme.mode == "dark"
+           ? props.theme.headerDarkModeColor
+           : props.theme.headerLightModeColor};
+
     }
     .searchBarContainer {
       background-color:  ${(props) =>

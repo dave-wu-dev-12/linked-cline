@@ -28,7 +28,7 @@
 .searchBarContainer input {
   border: none;
   background-color: transparent;
-  outline-style: none;
+  outline: none;
 }
 
 .logoImage {
@@ -37,12 +37,26 @@
   object-fit: cover;
 }
 
-.rightHeaderContainer {
+.rightHeaderContainer,
+.iconHeaderContainer,
+.subContentContainer {
   display: flex;
   align-items: center;
+}
+
+.iconHeaderContainer {
+  border-right: 1px solid lightgray;
 }
 
 .searchImg {
   font-size: 1em !important;
   cursor: text;
+}
+
+.freeLink {
+  color: goldenrod;
+  font-size: 0.65em;
+  word-wrap: break-word;
+  width: 90px;
+  text-align: center;
 }
