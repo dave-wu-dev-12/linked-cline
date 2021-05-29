@@ -46,6 +46,7 @@
 
 .iconHeaderContainer {
   border-right: 1px solid lightgray;
+  position: relative;
 }
 
 .searchImg {

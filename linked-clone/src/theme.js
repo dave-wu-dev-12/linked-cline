@@ -41,6 +41,16 @@ const GlobalStyle = createGlobalStyle`
           ? props.theme.inputDarkMode
           : props.theme.inputLightMode};
     }
+    .userDropdownContainer{
+      background-color:  ${(props) =>
+        props.theme.mode == "dark"
+          ? props.theme.headerDarkModeColor
+          : props.theme.headerLightModeColor};
+      border: ${(props) =>
+        props.theme.mode == "dark"
+          ? props.theme.borderDarkMode
+          : props.theme.borderLightMode};
+    }
     
   `;
 

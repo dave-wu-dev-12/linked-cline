@@ -1,0 +1,38 @@
+.userDropdownContainer {
+  position: absolute;
+  top: 45px;
+  left: 175px;
+  width: 175px;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+.dropdownDivider {
+  background-color: lightgray;
+}
+
+.dropdown_profile_inner {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown_avatar {
+  width: 30px !important;
+  height: 30px !important;
+  margin-right: 0.25em;
+}
+
+.dropdown_profile_text p {
+  font-size: 0.75em;
+  word-wrap: break-word;
+}
+
+.dropdown_button {
+  background-color: transparent;
+  border: 2px solid lightskyblue;
+  color: lightskyblue;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: none;
+  margin: 0.5em 0;
+}

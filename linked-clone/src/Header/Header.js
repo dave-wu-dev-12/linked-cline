@@ -9,6 +9,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import HeaderIcons from "./HeaderIcons/HeaderIcons";
 import Avatar from "@material-ui/core/Avatar";
 import AppsIcon from "@material-ui/icons/Apps";
+import UserDropdown from "./UserDropdown/UserDropdown";
 
 function Header() {
   return (
@@ -36,6 +37,10 @@ function Header() {
               label={"Notifications"}
             ></HeaderIcons>
             <HeaderIcons Icon={Avatar} label={"Me"}></HeaderIcons>
+            <UserDropdown
+              userName={"Dirk"}
+              title={"Manager at Hendricx Hendricx Inc Hendricx LLC"}
+            ></UserDropdown>
           </div>
           <div className="subContentContainer">
             <HeaderIcons Icon={AppsIcon} label={"Work"}></HeaderIcons>
