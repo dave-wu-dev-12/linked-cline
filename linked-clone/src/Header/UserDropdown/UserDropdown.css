@@ -36,3 +36,7 @@
   box-shadow: none;
   margin: 0.5em 0;
 }
+
+.dropdown_button:hover {
+  background-color: rgb(105, 127, 140);
+}

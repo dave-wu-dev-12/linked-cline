@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import HomeIcon from "@material-ui/icons/Home";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
@@ -12,6 +12,21 @@ import AppsIcon from "@material-ui/icons/Apps";
 import UserDropdown from "./UserDropdown/UserDropdown";
 
 function Header() {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [addtionalStyle, setAddtionalStyle] = useState("");
+
+  const fadeOutandCloseDropdown = () => {
+    if (showDropdown == true) {
+      setAddtionalStyle("fadeOut");
+      setTimeout(() => {
+        setShowDropdown(false);
+      }, 250);
+    } else {
+      setAddtionalStyle("");
+      setShowDropdown(true);
+    }
+  };
+
   return (
     <div className="headerContainer">
       <div className="headerContentContainer">
@@ -36,11 +51,18 @@ function Header() {
               Icon={NotificationsIcon}
               label={"Notifications"}
             ></HeaderIcons>
-            <HeaderIcons Icon={Avatar} label={"Me"}></HeaderIcons>
-            <UserDropdown
-              userName={"Dirk"}
-              title={"Manager at Hendricx Hendricx Inc Hendricx LLC"}
-            ></UserDropdown>
+            <HeaderIcons
+              Icon={Avatar}
+              label={"Me"}
+              action={fadeOutandCloseDropdown}
+            ></HeaderIcons>
+            {showDropdown && (
+              <UserDropdown
+                userName={"Dirk"}
+                title={"Manager at Hendricx Hendricx Inc Hendricx LLC"}
+                addtionalStyle={addtionalStyle}
+              ></UserDropdown>
+            )}
           </div>
           <div className="subContentContainer">
             <HeaderIcons Icon={AppsIcon} label={"Work"}></HeaderIcons>
