@@ -10,10 +10,12 @@ import HeaderIcons from "./HeaderIcons/HeaderIcons";
 import Avatar from "@material-ui/core/Avatar";
 import AppsIcon from "@material-ui/icons/Apps";
 import UserDropdown from "./UserDropdown/UserDropdown";
+import ProductMenu from "./ProductMenu/ProductMenu";
 
 function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [addtionalStyle, setAddtionalStyle] = useState("");
+  const [showProductMenu, setProductMenu] = useState(false);
 
   const fadeOutandCloseDropdown = () => {
     if (showDropdown == true) {
@@ -65,13 +67,18 @@ function Header() {
             )}
           </div>
           <div className="subContentContainer">
-            <HeaderIcons Icon={AppsIcon} label={"Work"}></HeaderIcons>
+            <HeaderIcons
+              Icon={AppsIcon}
+              label={"Work"}
+              action={() => setProductMenu(!showProductMenu)}
+            ></HeaderIcons>
             <a href="" className="freeLink">
               Try Premium Free for 1 Month
             </a>
           </div>
         </div>
       </div>
+      {showProductMenu && <ProductMenu></ProductMenu>}
     </div>
   );
 }

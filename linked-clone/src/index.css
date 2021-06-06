@@ -28,3 +28,29 @@ code {
     opacity: 0;
   }
 }
+
+.fadeIn {
+  animation: fadeInAnimation 0.5s;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+
+.slideIn {
+  animation: slideInAnimation 0.5s;
+}
+
+@keyframes slideInAnimation {
+  from {
+    right: -200px;
+  }
+  to {
+    right: 0;
+  }
+}

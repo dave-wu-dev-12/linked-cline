@@ -51,6 +51,13 @@ const GlobalStyle = createGlobalStyle`
           ? props.theme.borderDarkMode
           : props.theme.borderLightMode};
     }
+
+    .productMenuContainer {
+      background-color:  ${(props) =>
+        props.theme.mode == "dark"
+          ? props.theme.darkModeColor
+          : props.theme.headerLightModeColor};
+    }
     
   `;
 
