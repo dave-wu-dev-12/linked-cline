@@ -58,6 +58,13 @@ const GlobalStyle = createGlobalStyle`
           ? props.theme.darkModeColor
           : props.theme.headerLightModeColor};
     }
+
+    .overlay {
+      background-color:  ${(props) =>
+        props.theme.mode == "dark"
+          ? props.theme.headerLightModeColor
+          : props.theme.headerDarkModeColor};
+    }
     
   `;
 

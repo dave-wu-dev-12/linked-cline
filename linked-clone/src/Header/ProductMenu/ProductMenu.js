@@ -3,7 +3,7 @@ import "./ProductMenu.css";
 
 function ProductMenu() {
   return (
-    <div className="productPopInContainer">
+    <div>
       <div className="overlay fadeIn"></div>
       <div className="productMenuContainer slideIn">123</div>
     </div>

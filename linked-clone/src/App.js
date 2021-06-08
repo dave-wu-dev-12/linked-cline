@@ -30,6 +30,7 @@ function App() {
           Switch to {theme.mode == "dark" ? "light" : "dark"} mode
         </button>
         <Header></Header>
+        <p>body content</p>
       </div>
     </ThemeProvider>
   );
