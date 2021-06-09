@@ -3,7 +3,7 @@ import "./UserDropdown.css";
 import Avatar from "@material-ui/core/Avatar";
 import ItemList from "./itemList/ItemList";
 
-function UserDropdown({ userName, title, addtionalStyle }) {
+function UserDropdown({ userName, title, isOpenAnimation }) {
   let items = ["Settings and Privacy", "Help", "Language"];
   let manageItems = ["Posts and Activity", "Job Posting Account"];
   let signOutItems = ["Sign Out"];
@@ -11,8 +11,7 @@ function UserDropdown({ userName, title, addtionalStyle }) {
   return (
     <div
       className={
-        "userDropdownContainer" +
-        (addtionalStyle != null ? ` ${addtionalStyle}` : ``)
+        "userDropdownContainer " + (isOpenAnimation ? "fadeIn" : "fadeOut")
       }
     >
       <div className="dropdown__profile">

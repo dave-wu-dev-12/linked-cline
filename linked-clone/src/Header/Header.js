@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import HomeIcon from "@material-ui/icons/Home";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
@@ -14,19 +14,51 @@ import ProductMenu from "./ProductMenu/ProductMenu";
 
 function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [addtionalStyle, setAddtionalStyle] = useState("");
-  const [showProductMenu, setProductMenu] = useState(false);
+  const [isDropdownOpenAnimation, setIsDropdownOpenAnimation] = useState(false);
 
-  const fadeOutandCloseDropdown = () => {
-    if (showDropdown == true) {
-      setAddtionalStyle("fadeOut");
-      setTimeout(() => {
-        setShowDropdown(false);
-      }, 250);
+  const [showProductMenu, setShowProductMenu] = useState(false);
+  const [isProductOpenAnimation, setIsProductOpenAnimation] = useState(false);
+
+  const toggleDropdownMenu = () => {
+    if (!showDropdown) {
+      dismissProductWithAnimation();
+      showDropDownMenuWithAnimation();
     } else {
-      setAddtionalStyle("");
-      setShowDropdown(true);
+      dismissDropdownWithAnimation();
     }
+  };
+
+  const toggleProductMenu = () => {
+    if (!showProductMenu) {
+      dismissDropdownWithAnimation();
+      showProductMenuWithAnimation();
+    } else {
+      dismissProductWithAnimation();
+    }
+  };
+
+  const showProductMenuWithAnimation = () => {
+    setIsProductOpenAnimation(true);
+    setShowProductMenu(true);
+  };
+
+  const showDropDownMenuWithAnimation = () => {
+    setIsDropdownOpenAnimation(true);
+    setShowDropdown(true);
+  };
+
+  const dismissProductWithAnimation = () => {
+    setIsProductOpenAnimation(false);
+    setTimeout(() => {
+      setShowProductMenu(false);
+    }, 250);
+  };
+
+  const dismissDropdownWithAnimation = () => {
+    setIsDropdownOpenAnimation(false);
+    setTimeout(() => {
+      setShowDropdown(false);
+    }, 250);
   };
 
   return (
@@ -56,21 +88,14 @@ function Header() {
             <HeaderIcons
               Icon={Avatar}
               label={"Me"}
-              action={fadeOutandCloseDropdown}
+              action={() => toggleDropdownMenu()}
             ></HeaderIcons>
-            {showDropdown && (
-              <UserDropdown
-                userName={"Dirk"}
-                title={"Manager at Hendricx Hendricx Inc Hendricx LLC"}
-                addtionalStyle={addtionalStyle}
-              ></UserDropdown>
-            )}
           </div>
           <div className="subContentContainer">
             <HeaderIcons
               Icon={AppsIcon}
               label={"Work"}
-              action={() => setProductMenu(!showProductMenu)}
+              action={() => toggleProductMenu()}
             ></HeaderIcons>
             <a href="" className="freeLink">
               Try Premium Free for 1 Month
@@ -78,7 +103,16 @@ function Header() {
           </div>
         </div>
       </div>
-      {showProductMenu && <ProductMenu></ProductMenu>}
+      {showDropdown && (
+        <UserDropdown
+          userName={"Dirk"}
+          title={"Manager at Hendricx Hendricx Inc Hendricx LLC"}
+          isOpenAnimation={isDropdownOpenAnimation}
+        ></UserDropdown>
+      )}
+      {showProductMenu && (
+        <ProductMenu isOpenAnimation={isProductOpenAnimation}></ProductMenu>
+      )}
     </div>
   );
 }

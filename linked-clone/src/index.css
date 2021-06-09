@@ -38,7 +38,33 @@ code {
     opacity: 0;
   }
   to {
+    opacity: 1;
+  }
+}
+
+.fadeInOverlay {
+  animation: fadeInOverlayAnimation 0.5s;
+}
+
+@keyframes fadeInOverlayAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 0.3;
+  }
+}
+
+.fadeOutOverlay {
+  animation: fadeOutOverlayAnimation 0.5s;
+}
+
+@keyframes fadeOutOverlayAnimation {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 0;
   }
 }
 
@@ -52,5 +78,18 @@ code {
   }
   to {
     right: 0;
+  }
+}
+
+.slideOut {
+  animation: slideOutAnimation 0.5s;
+}
+
+@keyframes slideOutAnimation {
+  from {
+    right: 0;
+  }
+  to {
+    right: -200px;
   }
 }
