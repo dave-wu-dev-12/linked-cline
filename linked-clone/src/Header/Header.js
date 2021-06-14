@@ -19,15 +19,6 @@ function Header() {
   const [showProductMenu, setShowProductMenu] = useState(false);
   const [isProductOpenAnimation, setIsProductOpenAnimation] = useState(false);
 
-  const toggleDropdownMenu = () => {
-    if (!showDropdown) {
-      dismissProductWithAnimation();
-      showDropDownMenuWithAnimation();
-    } else {
-      dismissDropdownWithAnimation();
-    }
-  };
-
   const toggleProductMenu = () => {
     if (!showProductMenu) {
       dismissDropdownWithAnimation();
@@ -37,16 +28,6 @@ function Header() {
     }
   };
 
-  const showProductMenuWithAnimation = () => {
-    setIsProductOpenAnimation(true);
-    setShowProductMenu(true);
-  };
-
-  const showDropDownMenuWithAnimation = () => {
-    setIsDropdownOpenAnimation(true);
-    setShowDropdown(true);
-  };
-
   const dismissProductWithAnimation = () => {
     setIsProductOpenAnimation(false);
     setTimeout(() => {
@@ -54,11 +35,41 @@ function Header() {
     }, 250);
   };
 
+  const showProductMenuWithAnimation = () => {
+    setIsProductOpenAnimation(true);
+    setShowProductMenu(true);
+  };
+
+  const toggleDropdownMenu = () => {
+    if (!showDropdown) {
+      dismissProductWithAnimation();
+      showDropDownMenuWithAnimation();
+    } else {
+      dismissDropdownWithAnimation();
+    }
+  };
+
   const dismissDropdownWithAnimation = () => {
     setIsDropdownOpenAnimation(false);
     setTimeout(() => {
       setShowDropdown(false);
     }, 250);
+  };
+
+  const showDropDownMenuWithAnimation = () => {
+    setIsDropdownOpenAnimation(true);
+    setShowDropdown(true);
+  };
+
+  const dropdownOnBlur = (event) => {
+    // currentTarget refers to this component.
+    // relatedTarget refers to the element where the user clicked (or focused) which
+    // triggered this event.
+    // So in effect, this condition checks if the user clicked outside the component.
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      dismissDropdownWithAnimation();
+      console.log("dropdown not focused");
+    }
   };
 
   return (
@@ -108,6 +119,7 @@ function Header() {
           userName={"Dirk"}
           title={"Manager at Hendricx Hendricx Inc Hendricx LLC"}
           isOpenAnimation={isDropdownOpenAnimation}
+          onblurActionFunction={dropdownOnBlur}
         ></UserDropdown>
       )}
       {showProductMenu && (
