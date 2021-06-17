@@ -26,7 +26,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <themes.GlobalStyle />
       <div className="App">
-        <button onClick={() => setAppTheme()}>
+        <button onClick={() => setAppTheme()} className="themeToggleButton">
           Switch to {theme.mode == "dark" ? "light" : "dark"} mode
         </button>
         <Header></Header>

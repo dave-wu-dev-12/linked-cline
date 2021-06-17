@@ -21,7 +21,6 @@ function Header() {
 
   const toggleProductMenu = () => {
     if (!showProductMenu) {
-      dismissDropdownWithAnimation();
       showProductMenuWithAnimation();
     } else {
       dismissProductWithAnimation();
@@ -40,9 +39,24 @@ function Header() {
     setShowProductMenu(true);
   };
 
+  const productMenuOnBlur = (event) => {
+    // currentTarget refers to this component.
+    // relatedTarget refers to the element where the user clicked (or focused) which
+    // triggered this event.
+    // So in effect, this condition checks if the user clicked outside the component.
+    // you do have the option to also check the class list of some other element
+    // like buttons or anchors that naturally have relatedTarget populated
+    if (
+      !event.currentTarget.contains(event.relatedTarget) &&
+      !event.relatedTarget?.classList.contains("themeToggleButton")
+    ) {
+      dismissProductWithAnimation();
+      console.log("product not focused");
+    }
+  };
+
   const toggleDropdownMenu = () => {
     if (!showDropdown) {
-      dismissProductWithAnimation();
       showDropDownMenuWithAnimation();
     } else {
       dismissDropdownWithAnimation();
@@ -66,7 +80,10 @@ function Header() {
     // relatedTarget refers to the element where the user clicked (or focused) which
     // triggered this event.
     // So in effect, this condition checks if the user clicked outside the component.
-    if (!event.currentTarget.contains(event.relatedTarget)) {
+    if (
+      !event.currentTarget.contains(event.relatedTarget) &&
+      !event.relatedTarget?.classList.contains("themeToggleButton")
+    ) {
       dismissDropdownWithAnimation();
       console.log("dropdown not focused");
     }
@@ -123,7 +140,10 @@ function Header() {
         ></UserDropdown>
       )}
       {showProductMenu && (
-        <ProductMenu isOpenAnimation={isProductOpenAnimation}></ProductMenu>
+        <ProductMenu
+          isOpenAnimation={isProductOpenAnimation}
+          onblurActionFunction={productMenuOnBlur}
+        ></ProductMenu>
       )}
     </div>
   );
