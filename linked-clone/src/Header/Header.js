@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Header.css";
 import HomeIcon from "@material-ui/icons/Home";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
@@ -18,6 +18,10 @@ function Header() {
 
   const [showProductMenu, setShowProductMenu] = useState(false);
   const [isProductOpenAnimation, setIsProductOpenAnimation] = useState(false);
+
+  const [isSearchIconClicked, setIsSearchIconClicked] = useState(false);
+
+  const searchRef = useRef();
 
   const toggleProductMenu = () => {
     if (!showProductMenu) {
@@ -89,6 +93,16 @@ function Header() {
     }
   };
 
+  const searchBarOnBlur = (event) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      setIsSearchIconClicked(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isSearchIconClicked) searchRef.current.focus();
+  }, [isSearchIconClicked]);
+
   return (
     <div className="headerContainer">
       <div className="headerContentContainer">
@@ -98,47 +112,75 @@ function Header() {
             src="https://image.flaticon.com/icons/png/512/174/174857.png"
             alt="logo"
           />
-          <div className="searchBarContainer">
+          <div
+            ref={searchRef}
+            onBlur={(e) => searchBarOnBlur(e)}
+            tabIndex="0"
+            className={
+              `searchBarContainer ` +
+              (isSearchIconClicked ? `largeSearchBarContainer` : ``)
+            }
+          >
             <SearchIcon className="searchImg"></SearchIcon>
             <input type="text" />
           </div>
         </div>
         <div className="rightHeaderContainer">
-          <div className="iconHeaderContainer">
-            <HeaderIcons Icon={HomeIcon} label={"Home"}></HeaderIcons>
-            <HeaderIcons Icon={PeopleAltIcon} label={"Network"}></HeaderIcons>
-            <HeaderIcons Icon={WorkIcon} label={"Jobs"}></HeaderIcons>
-            <HeaderIcons Icon={MessageIcon} label={"Messaging"}></HeaderIcons>
-            <HeaderIcons
-              Icon={NotificationsIcon}
-              label={"Notifications"}
-            ></HeaderIcons>
-            <HeaderIcons
-              Icon={Avatar}
-              label={"Me"}
-              action={() => toggleDropdownMenu()}
-            ></HeaderIcons>
-          </div>
-          <div className="subContentContainer">
-            <HeaderIcons
-              Icon={AppsIcon}
-              label={"Work"}
-              action={() => toggleProductMenu()}
-            ></HeaderIcons>
-            <a href="" className="freeLink">
-              Try Premium Free for 1 Month
-            </a>
-          </div>
+          {!isSearchIconClicked && (
+            <>
+              <div className="iconHeaderContainer">
+                <>
+                  <HeaderIcons
+                    Icon={SearchIcon}
+                    label={"Search"}
+                    action={() => setIsSearchIconClicked(true)}
+                  ></HeaderIcons>
+                  <HeaderIcons Icon={HomeIcon} label={"Home"}></HeaderIcons>
+                  <HeaderIcons
+                    Icon={PeopleAltIcon}
+                    label={"Network"}
+                  ></HeaderIcons>
+                  <HeaderIcons Icon={WorkIcon} label={"Jobs"}></HeaderIcons>
+                  <HeaderIcons
+                    Icon={MessageIcon}
+                    label={"Messaging"}
+                  ></HeaderIcons>
+                  <HeaderIcons
+                    Icon={NotificationsIcon}
+                    label={"Notifications"}
+                  ></HeaderIcons>
+                  <HeaderIcons
+                    Icon={Avatar}
+                    label={"Me"}
+                    action={() => toggleDropdownMenu()}
+                  ></HeaderIcons>
+                </>
+
+                {/*We should leave this here since it uses pos abs to stick to the iconHeaderContainer header*/}
+                {showDropdown && (
+                  <UserDropdown
+                    userName={"Dirk"}
+                    title={"Manager at Hendricx Hendricx Inc Hendricx LLC"}
+                    isOpenAnimation={isDropdownOpenAnimation}
+                    onblurActionFunction={dropdownOnBlur}
+                  ></UserDropdown>
+                )}
+              </div>
+              <div className="subContentContainer">
+                <HeaderIcons
+                  Icon={AppsIcon}
+                  label={"Work"}
+                  action={() => toggleProductMenu()}
+                ></HeaderIcons>
+                <a href="" className="freeLink">
+                  Try Premium Free for 1 Month
+                </a>
+              </div>
+            </>
+          )}
         </div>
       </div>
-      {showDropdown && (
-        <UserDropdown
-          userName={"Dirk"}
-          title={"Manager at Hendricx Hendricx Inc Hendricx LLC"}
-          isOpenAnimation={isDropdownOpenAnimation}
-          onblurActionFunction={dropdownOnBlur}
-        ></UserDropdown>
-      )}
+
       {showProductMenu && (
         <ProductMenu
           isOpenAnimation={isProductOpenAnimation}

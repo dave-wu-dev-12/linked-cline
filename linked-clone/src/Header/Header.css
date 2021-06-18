@@ -1,5 +1,6 @@
 .headerContainer {
-  position: relative;
+  position: sticky;
+  top: 0;
 }
 
 .headerContentContainer {
@@ -24,12 +25,20 @@
   padding: 0.25em;
   border-radius: 5px;
   margin-left: 0.5em;
+  width: 100%;
 }
 
 .searchBarContainer input {
   border: none;
   background-color: transparent;
   outline: none;
+  flex: 1;
+  transition: width 0.35s ease-in;
+  width: 200px;
+}
+
+.searchBarContainer input:focus {
+  width: 250px;
 }
 
 .logoImage {
@@ -61,4 +70,19 @@
   word-wrap: break-word;
   width: 90px;
   text-align: center;
+}
+
+.largeSearchBarContainer {
+  display: flex !important;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .searchBarContainer {
+    display: none;
+  }
+
+  .headerContentContainer {
+    justify-content: flex-start;
+  }
 }
