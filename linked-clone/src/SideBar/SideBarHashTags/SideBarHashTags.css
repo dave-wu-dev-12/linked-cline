@@ -1,0 +1,45 @@
+.sideBarHashTagContainer {
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  box-sizing: border-box;
+  background-color: white;
+  margin-top: 1em;
+  padding-bottom: 1em;
+}
+
+.hashTagHeader {
+  display: flex;
+  padding: 1em;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85em;
+}
+
+.chevronIcon {
+  visibility: hidden;
+}
+
+.hashTagHeader:hover .chevronIcon {
+  visibility: visible;
+}
+
+.hashTagLineItem {
+  display: flex;
+  padding: 0.25em 1em;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 0.85em;
+}
+
+.hashtagIcon {
+  margin-right: 0.25em;
+  font-weight: 900;
+}
+
+.hashTagLineContainer {
+  cursor: pointer;
+}
+
+.hashTagLineContainer :hover {
+  background-color: lightgray;
+}
