@@ -1,0 +1,21 @@
+.bodyContentContainer {
+  min-width: 250px;
+  width: 90%;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.bodyContentContainer h4 {
+  text-align: center;
+  cursor: pointer;
+}
+
+.bodyContentContainer h4:hover {
+  text-decoration: underline;
+}
+
+.profileContentContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

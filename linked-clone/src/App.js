@@ -4,6 +4,7 @@ import { useState } from "react";
 import * as themes from "./theme";
 import { ThemeProvider } from "styled-components";
 import Header from "./Header/Header";
+import SideBar from "./SideBar/SideBar";
 
 function App() {
   const getInitialTheme = () => {
@@ -30,7 +31,12 @@ function App() {
           Switch to {theme.mode == "dark" ? "light" : "dark"} mode
         </button>
         <Header></Header>
-        <p>body content</p>
+        <div className="bodyContentContainer">
+          <h4>This is space for an Ad</h4>
+          <div className="profileContentContainer">
+            <SideBar></SideBar>
+          </div>
+        </div>
       </div>
     </ThemeProvider>
   );
