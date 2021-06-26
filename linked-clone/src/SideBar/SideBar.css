@@ -3,3 +3,22 @@
   min-width: 225px;
   height: 100vh;
 }
+
+.showMoreSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.showMoreSection:hover {
+  background-color: lightgrey;
+}
+
+@media (max-width: 900px) {
+  .sideBarContainer {
+    width: 95%;
+  }
+}

@@ -57,3 +57,9 @@
 .profileViewItem :hover {
   background-color: lightgray;
 }
+
+@media (max-width: 900px) {
+  .sideBarMiniProfileAvatar {
+    left: 46.5%;
+  }
+}

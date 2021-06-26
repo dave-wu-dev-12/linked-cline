@@ -5,6 +5,8 @@
   background-color: white;
   margin-top: 1em;
   padding-bottom: 1em;
+  position: sticky;
+  top: 4em;
 }
 
 .hashTagHeader {

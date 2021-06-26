@@ -19,3 +19,9 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@media (max-width: 900px) {
+  .profileContentContainer {
+    flex-direction: column;
+  }
+}

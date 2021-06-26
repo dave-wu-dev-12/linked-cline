@@ -5,6 +5,7 @@ import * as themes from "./theme";
 import { ThemeProvider } from "styled-components";
 import Header from "./Header/Header";
 import SideBar from "./SideBar/SideBar";
+import Feed from "./Feed/Feed";
 
 function App() {
   const getInitialTheme = () => {
@@ -35,6 +36,7 @@ function App() {
           <h4>This is space for an Ad</h4>
           <div className="profileContentContainer">
             <SideBar></SideBar>
+            <Feed></Feed>
           </div>
         </div>
       </div>

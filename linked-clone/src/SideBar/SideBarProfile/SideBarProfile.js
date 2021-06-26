@@ -5,7 +5,7 @@ import SideBarProfileLineItem from "./SideBarProfileLineItem/SideBarProfileLineI
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import TurnedInIcon from "@material-ui/icons/TurnedIn";
 
-function SideBarProfile() {
+function SideBarProfile({ hideProfileDetails }) {
   return (
     <div className="sideBarProfileContainer">
       <div className="sideBarMiniProfile">
@@ -15,31 +15,34 @@ function SideBarProfile() {
         <h4>Dirk</h4>
         <p>Manager at Hendricx Hendricx Inc Hendricx LLC</p>
       </div>
+      {!hideProfileDetails && (
+        <>
+          <div className="sideBarProfileViews">
+            <SideBarProfileLineItem
+              header={"Who viewed your profile"}
+              count={"20"}
+            ></SideBarProfileLineItem>
 
-      <div className="sideBarProfileViews">
-        <SideBarProfileLineItem
-          header={"Who viewed your profile"}
-          count={"20"}
-        ></SideBarProfileLineItem>
+            <SideBarProfileLineItem
+              header={"Connections"}
+              count={"413"}
+              bodyText={"Grow your network"}
+            ></SideBarProfileLineItem>
+          </div>
+          <div className="profilePremium">
+            <SideBarProfileLineItem
+              Icon={AddBoxIcon}
+              header={"Access exclusive tools"}
+              bodyText={"Try Premium for free"}
+            ></SideBarProfileLineItem>
+          </div>
 
-        <SideBarProfileLineItem
-          header={"Connections"}
-          count={"413"}
-          bodyText={"Grow your network"}
-        ></SideBarProfileLineItem>
-      </div>
-      <div className="profilePremium">
-        <SideBarProfileLineItem
-          Icon={AddBoxIcon}
-          header={"Access exclusive tools"}
-          bodyText={"Try Premium for free"}
-        ></SideBarProfileLineItem>
-      </div>
-
-      <SideBarProfileLineItem
-        Icon={TurnedInIcon}
-        bodyText={"My Items"}
-      ></SideBarProfileLineItem>
+          <SideBarProfileLineItem
+            Icon={TurnedInIcon}
+            bodyText={"My Items"}
+          ></SideBarProfileLineItem>
+        </>
+      )}
     </div>
   );
 }
