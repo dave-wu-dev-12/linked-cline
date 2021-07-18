@@ -1,0 +1,7 @@
+.postTypeContainer {
+  display: flex;
+}
+
+.postTypesText {
+  margin-left: 0.75em;
+}

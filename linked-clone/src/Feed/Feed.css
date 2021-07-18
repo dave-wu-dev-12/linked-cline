@@ -1,5 +1,40 @@
 .feedContainer {
-  width: 18%;
+  width: 62%;
   min-width: 225px;
   height: 100vh;
+}
+
+.createPostContainer {
+  background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+  border: 1px solid gray;
+}
+
+.userInfoAndPostContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.postInfoText {
+  margin-left: 1em;
+  flex: 1;
+  font-size: 1em;
+  border-radius: 10px;
+  border: 1px solid gray;
+  outline: none;
+  padding: 0.5em;
+}
+
+.postInfoAvatar {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.userPostTypesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
