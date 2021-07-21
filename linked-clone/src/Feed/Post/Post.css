@@ -1,0 +1,39 @@
+.singlePostContainer {
+  border: 1px solid grey;
+  margin: 1em 0.25em;
+  padding: 1em;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.postInformationAndOptionContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+
+.postIconAndInformation {
+  display: flex;
+  align-items: flex-start;
+}
+
+.postInfoAndFollowers {
+  margin-left: 1em;
+}
+
+.postTextContentContainer {
+  width: 100%;
+  min-height: 30px;
+  margin-bottom: 0.5em;
+}
+
+.postReactionContainer {
+  display: flex;
+  margin-bottom: 0.5em;
+}
+
+.postReactionActionsContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
