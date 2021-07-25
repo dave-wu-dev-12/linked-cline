@@ -12,7 +12,7 @@ import AppsIcon from "@material-ui/icons/Apps";
 import UserDropdown from "./UserDropdown/UserDropdown";
 import ProductMenu from "./ProductMenu/ProductMenu";
 
-function Header() {
+function Header({ userData }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [isDropdownOpenAnimation, setIsDropdownOpenAnimation] = useState(false);
 
@@ -102,6 +102,25 @@ function Header() {
   useEffect(() => {
     if (isSearchIconClicked) searchRef.current.focus();
   }, [isSearchIconClicked]);
+
+  // only runs ONE time
+  useEffect(() => {
+    console.log("header useEffect for first render is ran");
+    console.log(userData);
+  }, []);
+
+  // only runs ON FIRST LOAD and ON EVERY change to items in DEP array
+  useEffect(() => {
+    console.log("header useEffect for dependency change is ran");
+    console.log(userData);
+  }, [userData]);
+
+  // runs on initial load and then every re-render of this comp
+  // which would include ANY state or prop changes to this component
+  // AND any changes to its parent
+  useEffect(() => {
+    console.log("header useEffect for ANY render is ran");
+  });
 
   return (
     <div className="headerContainer">
